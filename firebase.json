@@ -1,0 +1,50 @@
+{
+  "hosting": {
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }],
+    "headers": [{
+        "source": "**",
+        "headers": [{
+            "key": "Cache-Control",
+            "value": "public, max-age=3600, no-cache"
+          },
+          {
+            "key": "Access-Control-Max-Age",
+            "value": "600"
+          }
+        ]
+      },
+      {
+        "source": "/sw.js",
+        "headers": [{
+          "key": "Cache-Control",
+          "value": "private, no-cache"
+        }]
+      },
+      {
+        "source": "**/*.chunk.*.js",
+        "headers": [{
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000"
+        }]
+      },
+      {
+        "source": "/",
+        "headers": [{
+          "key": "Link",
+          "value": "</bundle.bab80.js>; rel=preload; as=script, </style.5ba60.css>; rel=preload; as=style, </route-home.chunk.3c8ac.js>; rel=preload; as=script"
+        }]
+      },
+      {
+        "source": "/profile",
+        "headers": [{
+          "key": "Link",
+          "value": "</bundle.bab80.js>; rel=preload; as=script, </style.5ba60.css>; rel=preload; as=style, </route-profile.chunk.f7131.js>; rel=preload; as=script"
+        }]
+      }
+    ],
+    "public": "build"
+  }
+}
